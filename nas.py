@@ -648,18 +648,18 @@ def update_plot(n_clicks_plot, selected_indicator, selected_frequency, selected_
         ), secondary_y=False)
 
         growth_type = f"{selected_price_type}_growth"
-        
-        fig.add_trace(go.Scatter(
-            x=x_axis,
-            y=indicator_df[growth_type],
-            mode='lines+markers',
-            name=f'{indicator} - {growth_type.replace("_", " ").title()}',
-            marker=dict(symbol='circle', size=8),
-            line=dict(shape='linear'),
-            legendgroup=f'{indicator}-{growth_type}',
-            text = [f"{val:.1f}%" for val in indicator_df[growth_type]],
-            hoverinfo='text+x',  # Show only text and x in the hover tooltip
-             ), secondary_y=True)
+        if series_selected=='All' or series_selected=='Current':
+            fig.add_trace(go.Scatter(
+                x=x_axis,
+                y=indicator_df[growth_type],
+                mode='lines+markers',
+                name=f'{indicator} - {growth_type.replace("_", " ").title()}',
+                marker=dict(symbol='circle', size=8),
+                line=dict(shape='linear'),
+                legendgroup=f'{indicator}-{growth_type}',
+                text = [f"{val:.1f}%" for val in indicator_df[growth_type]],
+                hoverinfo='text+x',  # Show only text and x in the hover tooltip
+                ), secondary_y=True)
 
    
     fig.update_layout(
