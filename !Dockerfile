@@ -1,0 +1,17 @@
+FROM python:latest
+RUN mkdir visual
+WORKDIR visual
+COPY . .
+#RUN pip install -r requirement.txt
+RUN pip install SQLAlchemy
+RUN pip install dash
+RUN pip install dash-bootstrap-components
+RUN pip install plotly
+RUN pip install pandas
+RUN pip install numpy
+RUN pip install psycopg2
+RUN pip install kaleido
+RUN pip install python-dotenv
+
+CMD [ "python3", "nas.py"]
+#ENTRYPOINT ["tail", "-f", "/dev/null"]
